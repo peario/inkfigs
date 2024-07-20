@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "inkfigs"
+version = "1.0.0"
+description = "Revamp and update of Gilles Castel's inkscape-figures"
+license = "MIT"
+authors = ["Gilles Castel <gilles@castel.dev>"]
+maintainers = ["Peario"]
+readme = "README.md"
+repository = "https://github.com/peario/inkfigs"
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+]
+packages = [{ include = "inkfigs" }]
+include = ["README.md", "src/template.svg"]
+
+[tool.poetry.scripts]
+# "inkfigs" = name of installed packaged
+inkfigs = "inkfigs.main:cli"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+daemonize = "^2.5.0"
+appdirs = "^1.4.4"
+click = "^8.1.7"
+pyperclip = "^1.9.0"
+inotify = { version = "^0.2.10", platform = "linux", optional = true }
+
+[tool.pyright]
+pythonVersion = "3.12"
+pythonPlatform = "All"
+executionEnvironments = [{ root = "src" }]
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
